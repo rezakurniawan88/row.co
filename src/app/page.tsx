@@ -1,113 +1,247 @@
-import Image from 'next/image'
+import Header from "@/components/Header"
+import InfoTips from "@/components/InfoTips"
+import Image from "next/image"
+import ContainerImage from "../../public/img/homepage.jpg"
+import VersaceLogo from "../../public/img/brands/versace-icon.png"
+import ZaraLogo from "../../public/img/brands/zara-icon.png"
+import GucciLogo from "../../public/img/brands/gucci-icon.png"
+import PradaLogo from "../../public/img/brands/prada-icon.png"
+import CalvinKleinLogo from "../../public/img/brands/calvin-icon.png"
+import Outfit1 from "../../public/img/outfit1.png"
+import Outfit2 from "../../public/img/outfit2.png"
+import Outfit3 from "../../public/img/outfit3.png"
+import Outfit4 from "../../public/img/outfit4.png"
+import MenImage from "../../public/img/man.jpg"
+import WomenImage from "../../public/img/women.jpg"
+import KidsImage from "../../public/img/kids.jpg"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main>
+      <InfoTips />
+      <Header />
+      <section className="homepage-container w-full h-full items-center justify-center relative">
+        <div className="w-full absolute flex flex-col justify-center pl-10 md:pl-20 h-full bg-opacity-50">
+          <h1 className="text-xl md:text-4xl font-bold text-white">Discover 2023 Fashion Trends</h1>
+          <p className="font-semibold text-xs text-white md:text-base leading-6 mt-1 mb-3 md:mt-3 md:mb-6">Your new look is just a click away.</p>
+          <button className="flex gap-2 items-center justify-center bg-black w-28 md:w-36 py-3 text-white text-xs sm:text-sm font-semibold hover:bg-white hover:border hover:border-black hover:text-black">Shop Now
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+          </button>
         </div>
-      </div>
+        <Image src={ContainerImage} alt="container-image" width={0} height={0} sizes="100vw" />
+      </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className="flex justify-center gap-28 py-20">
+        <Image src={VersaceLogo} alt="versace-logo" width={90} height={90} className="opacity-50" />
+        <Image src={ZaraLogo} alt="zara-logo" width={90} height={90} className="opacity-50" />
+        <Image src={GucciLogo} alt="gucci-logo" width={90} height={90} className="opacity-50" />
+        <Image src={PradaLogo} alt="prada-logo" width={90} height={90} className="opacity-50" />
+        <Image src={CalvinKleinLogo} alt="calvin-klein-logo" width={90} height={90} className="opacity-50" />
+      </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      <section className="flex flex-col justify-center items-center py-10 px-16">
+        <div className="w-full flex justify-between">
+          <h1 className="text-3xl font-bold uppercase">New Arrivals</h1>
+          <button className="text-sm font-semibold border py-2 px-8 rounded-full">View all</button>
+        </div>
+        <div className="flex w-full my-12 overflow-x-scroll no-scrollbar">
+          <div className="flex space-x-4">
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit1} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit2} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit3} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit4} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit3} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+          </div>
+        </div>
+        <hr className="w-full mt-16" />
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+      <section className="flex flex-col justify-center items-center pt-5 pb-10 px-16">
+        <div className="w-full flex justify-between">
+          <h1 className="text-3xl font-bold uppercase">Top Selling</h1>
+          <button className="text-sm font-semibold border py-2 px-8 rounded-full">View all</button>
+        </div>
+        <div className="flex w-full my-12 overflow-x-scroll no-scrollbar">
+          <div className="flex space-x-4">
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit3} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit1} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit2} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit4} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit3} alt="outfit" width={300} height={300} className="" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {/* <section className="flex flex-col justify-center items-center py-10 px-16 border-b-[1px] border-slate-400">
+        <h1 className="text-3xl font-black text-center">TOP SELLING</h1>
+        <div className="flex gap-4 my-16">
+          <div>
+            <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+              <Image src={Outfit3} alt="outfit" width={300} height={300} className="" />
+            </div>
+            <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+            <h1 className="text-xl font-bold">Rp. 100.000</h1>
+          </div>
+          <div>
+            <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+              <Image src={Outfit2} alt="outfit" width={300} height={240} className="" />
+            </div>
+            <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+            <h1 className="text-xl font-bold">Rp. 100.000</h1>
+          </div>
+          <div>
+            <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+              <Image src={Outfit4} alt="outfit" width={300} height={300} className="" />
+            </div>
+            <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+            <h1 className="text-xl font-bold">Rp. 100.000</h1>
+          </div>
+          <div>
+            <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+              <Image src={Outfit1} alt="outfit" width={300} height={300} className="" />
+            </div>
+            <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+            <h1 className="text-xl font-bold">Rp. 100.000</h1>
+          </div>
+        </div>
+        <button className="w-40 text-sm font-semibold border py-2 px-10 rounded-full">View all</button>
+      </section> */}
+
+      <section className="py-10 px-16">
+        <h1 className="text-3xl font-bold uppercase text-center">Browse By Category</h1>
+        <div className="flex gap-10 my-16">
+          <div className="relative w-[30%] overflow-hidden group cursor-pointer">
+            <Image src={MenImage} alt="man-image" width={0} height={0} className="w-full h-full group-hover:scale-110" />
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10">
+              <button className="absolute bottom-5 left-5 flex gap-2 items-center justify-center bg-white px-6 py-3 text-black text-xs font-bold hover:bg-gray-200">Men`s
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+              </button>
+            </div>
+          </div>
+          <div className="relative w-[30%] overflow-hidden group cursor-pointer">
+            <Image src={WomenImage} alt="man-image" width={0} height={0} className="w-full h-full group-hover:scale-110" />
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10">
+              <button className="absolute bottom-5 left-5 flex gap-2 items-center justify-center bg-white px-6 py-3 text-black text-xs font-bold hover:bg-gray-200">Women`s
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+              </button>
+            </div>
+          </div>
+          <div className="relative w-[30%] overflow-hidden group cursor-pointer">
+            <Image src={KidsImage} alt="man-image" width={0} height={0} className="w-full h-full group-hover:scale-110" />
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10">
+              <button className="absolute bottom-5 left-5 flex gap-2 items-center justify-center bg-white px-6 py-3 text-black text-xs font-bold hover:bg-gray-200">Kid`s
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 px-16 overflow-hidden">
+        <h1 className="text-3xl font-bold uppercase text-center">OUR HAPPY CUSTOMERS</h1>
+        <div className="flex gap-10 my-16">
+          <div className="w-80 p-6 border border-black border-opacity-10 rounded-xl">
+            <div className="flex items-center gap-1.5">
+              <h1 className="text-lg font-bold">Sarah M.</h1>
+              <div className="flex justify-center items-center bg-blue-400 w-4 h-4 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-badge-check text-white"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><path d="m9 12 2 2 4-4" /></svg>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-2">"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>
+          </div>
+          <div className="w-80 p-6 border border-black border-opacity-10 rounded-xl">
+            <div className="flex items-center gap-1.5">
+              <h1 className="text-lg font-bold">Sarah M.</h1>
+              <div className="flex justify-center items-center bg-blue-400 w-4 h-4 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-badge-check text-white"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><path d="m9 12 2 2 4-4" /></svg>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-2">"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>
+          </div>
+          <div className="w-80 p-6 border border-black border-opacity-10 rounded-xl">
+            <div className="flex items-center gap-1.5">
+              <h1 className="text-lg font-bold">Sarah M.</h1>
+              <div className="flex justify-center items-center bg-blue-400 w-4 h-4 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-badge-check text-white"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><path d="m9 12 2 2 4-4" /></svg>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-2">"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>
+          </div>
+          <div className="w-80 p-6 border border-black border-opacity-10 rounded-xl">
+            <div className="flex items-center gap-1.5">
+              <h1 className="text-lg font-bold">Sarah M.</h1>
+              <div className="flex justify-center items-center bg-blue-400 w-4 h-4 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-badge-check text-white"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><path d="m9 12 2 2 4-4" /></svg>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-2">"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </main>
   )
 }
