@@ -15,6 +15,7 @@ import MenImage from "../../public/img/man.jpg"
 import WomenImage from "../../public/img/women.jpg"
 import KidsImage from "../../public/img/kids.jpg"
 import Footer from "@/components/Footer"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -47,13 +48,15 @@ export default function Home() {
         </div>
         <div className="flex w-full my-12 overflow-x-scroll no-scrollbar">
           <div className="flex space-x-4">
-            <div className="w-80 h-full cursor-pointer">
-              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
-                <Image src={Outfit1} alt="outfit" width={300} height={300} className="" />
+            <Link href="/detail">
+              <div className="w-80 h-full cursor-pointer">
+                <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                  <Image src={Outfit1} alt="outfit" width={300} height={300} className="" />
+                </div>
+                <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+                <h1 className="text-xl font-bold">Rp. 100.000</h1>
               </div>
-              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
-              <h1 className="text-xl font-bold">Rp. 100.000</h1>
-            </div>
+            </Link>
             <div className="w-80 h-full cursor-pointer">
               <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
                 <Image src={Outfit2} alt="outfit" width={300} height={300} className="" />
