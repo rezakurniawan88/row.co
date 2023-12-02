@@ -15,8 +15,12 @@ export default function Header() {
             <header className="flex justify-between items-center px-6 md:px-10 py-4 border-b-[1px]">
                 <h1 className="header-title font-bold text-xl">ROW.CO</h1>
                 <ul className="navbar-text hidden sm:flex gap-6 font-medium">
-                    <li className="hover:border-b-2 hover:border-black cursor-pointer">Home</li>
-                    <li className="hover:border-b-2 hover:border-black cursor-pointer">Explore</li>
+                    <Link href="/">
+                        <li className="hover:border-b-2 hover:border-black cursor-pointer">Home</li>
+                    </Link>
+                    <Link href="/explore">
+                        <li className="hover:border-b-2 hover:border-black cursor-pointer">Explore</li>
+                    </Link>
                     <li className="hover:border-b-2 hover:border-black cursor-pointer">New Arrivals</li>
                     <li className="hover:border-b-2 hover:border-black cursor-pointer">Brands</li>
                 </ul>
