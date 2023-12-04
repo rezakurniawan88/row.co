@@ -1,5 +1,5 @@
-import Header from "@/components/Header"
-import InfoTips from "@/components/InfoTips"
+import Header from "@/components/header"
+import InfoTips from "@/components/info-tips"
 import Image from "next/image"
 import ContainerImage from "../../public/img/homepage.jpg"
 import VersaceLogo from "../../public/img/brands/versace-icon.png"
@@ -14,7 +14,7 @@ import Outfit4 from "../../public/img/outfit4.png"
 import MenImage from "../../public/img/man.jpg"
 import WomenImage from "../../public/img/women.jpg"
 import KidsImage from "../../public/img/kids.jpg"
-import Footer from "@/components/Footer"
+import Footer from "@/components/footer"
 import Link from "next/link"
 
 export default function Home() {

@@ -1,6 +1,6 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import InfoTips from "@/components/InfoTips";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import InfoTips from "@/components/info-tips";
 import Link from "next/link";
 
 export default function page() {
