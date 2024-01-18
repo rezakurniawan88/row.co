@@ -1,3 +1,5 @@
+"use client"
+
 import Header from "@/components/header"
 import InfoTips from "@/components/info-tips"
 import Image from "next/image"
@@ -16,8 +18,11 @@ import WomenImage from "../../public/img/women.jpg"
 import KidsImage from "../../public/img/kids.jpg"
 import Footer from "@/components/footer"
 import Link from "next/link"
+import useFetchProducts from "@/hooks/products/useFetchProducts"
 
 export default function Home() {
+  const { data: dataProducts, isLoading: productIsLoading } = useFetchProducts();
+
   return (
     <main>
       <InfoTips />
@@ -48,44 +53,46 @@ export default function Home() {
         </div>
         <div className="flex w-full my-12 overflow-x-scroll no-scrollbar">
           <div className="flex space-x-4">
-            <Link href="/detail">
-              <div className="w-80 h-full cursor-pointer">
-                <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
-                  <Image src={Outfit1} alt="outfit" width={300} height={300} className="" />
+            {dataProducts?.map((product) => (
+              <Link key={product.id} href={`/detail/${product.slug}`}>
+                <div className="w-72 h-full cursor-pointer">
+                  <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                    <Image src={product.images_url[0]} alt="outfit" width={300} height={300} className="" />
+                  </div>
+                  <h1 className="font-semibold">{product.title}</h1>
+                  <h1 className="text-xl font-bold">Rp. {product.price.toLocaleString()}</h1>
                 </div>
-                <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
-                <h1 className="text-xl font-bold">Rp. 100.000</h1>
-              </div>
-            </Link>
-            <div className="w-80 h-full cursor-pointer">
-              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
-                <Image src={Outfit2} alt="outfit" width={300} height={300} className="" />
-              </div>
-              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
-              <h1 className="text-xl font-bold">Rp. 100.000</h1>
-            </div>
-            <div className="w-80 h-full cursor-pointer">
-              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
-                <Image src={Outfit3} alt="outfit" width={300} height={300} className="" />
-              </div>
-              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
-              <h1 className="text-xl font-bold">Rp. 100.000</h1>
-            </div>
-            <div className="w-80 h-full cursor-pointer">
-              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
-                <Image src={Outfit4} alt="outfit" width={300} height={300} className="" />
-              </div>
-              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
-              <h1 className="text-xl font-bold">Rp. 100.000</h1>
-            </div>
-            <div className="w-80 h-full cursor-pointer">
-              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
-                <Image src={Outfit3} alt="outfit" width={300} height={300} className="" />
-              </div>
-              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
-              <h1 className="text-xl font-bold">Rp. 100.000</h1>
-            </div>
+              </Link>
+            ))}
           </div>
+          {/* <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit2} alt="outfit" width={300} height={300} className="rounded-2xl" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit3} alt="outfit" width={300} height={300} className="rounded-2xl" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit4} alt="outfit" width={300} height={300} className="rounded-2xl" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div>
+            <div className="w-80 h-full cursor-pointer">
+              <div className="bg-grayCard w-full h-80 rounded-2xl overflow-hidden mb-6">
+                <Image src={Outfit3} alt="outfit" width={300} height={300} className="rounded-2xl" />
+              </div>
+              <h1 className="font-semibold">T-SHIRT WITH TAPE DETAILS</h1>
+              <h1 className="text-xl font-bold">Rp. 100.000</h1>
+            </div> */}
         </div>
         <hr className="w-full mt-16" />
       </section>

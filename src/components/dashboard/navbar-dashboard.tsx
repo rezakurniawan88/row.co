@@ -1,4 +1,10 @@
+"use client"
+
+import { useState } from "react";
+
 export default function NavbarDashboard() {
+    const [isMenuOpen] = useState(false);
+
     return (
         <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -25,7 +31,7 @@ export default function NavbarDashboard() {
                             </div>
                         </button>
 
-                        <div className="w-44 bg-white rounded divide-y divide-gray-100 shadow absolute top-14 right-6">
+                        <div className={isMenuOpen ? "w-44 bg-white rounded divide-y divide-gray-100 shadow absolute top-14 right-6" : "hidden"}>
                             <div className="py-3 px-4 text-xs text-gray-900">
                                 <div>Admin</div>
                                 <div className="font-medium truncate">admin@gmail.com</div>
