@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- Ctrl + shift + V for preview-->
+# ROW.CO - Fashion E-Commerce
+
+![Demo ROW.CO](/public/preview/homepage.png)
+
+ROW.CO is an e-commerce website that focuses on fashion. This website offers various features to make it easier for users to shop online.
+
+## Features
+
+- Authentication : User authentication and authorization.
+- New Arrivals & Top Selling: Discover the latest and best selling products.
+- Explore Page: Filter products by category, color, size, price, and more.
+- Brands Page: Explore the brands available at ROW.CO.
+- Search Product: Search for products easily and quickly.
+- Cart Page: Save the products you want to buy to your shopping cart.
+- Profile Page: Manage user profile.
+- Email Notifications: Password reset and successful order details will be sent to the user's email.
+- Responsive Mode: This website can be accessed well on various devices, from desktop to mobile.
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework for server-side rendering and static site generation
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Shadcn](https://ui.shadcn.com/) - Beautifully designed reusable components
+- [React Query](https://react-query.tanstack.com/) - Hooks for fetching, caching, and updating asynchronous data in React
+- [React Hook Form](https://react-hook-form.com/) - Form library for React
+- [Zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation library
+- [Zustand](https://github.com/pmndrs/zustand) - Simple state management solution
+- [Axios](https://axios-http.com/) - Promise-based HTTP client for the browser and Node.js
+
+## Demo
+[![Row.co_Demo_Video](https://img.youtube.com/vi/xYMIZLzNYcs/0.jpg)](https://youtu.be/xYMIZLzNYcs)
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/rezakurniawan88/row.co.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+cd row.co
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Env configuration :
+```bash
+cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Start the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open http://localhost:3000 in your browser to see the application.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Backend
+Link repo row.co-backend : https://github.com/rezakurniawan88/row.co-backend

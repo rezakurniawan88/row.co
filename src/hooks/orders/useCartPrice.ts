@@ -1,14 +1,13 @@
 import useCartStore from "@/stores/cartStore";
+import { CartItemProps } from "@/types/carts-types";
 import { useState, useEffect} from "react";
 
-export const useCartPrice = (carts) => {
+export const useCartPrice = (carts: CartItemProps) => {
     const [subTotal, setSubTotal] = useState<number>(0);
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [totalPriceAfterDiscount, setTotalPriceAfterDiscount] = useState<number>(0);
     const tax = subTotal * 10 / 100;
     const { discount } = useCartStore((state) => state);
-    console.log("state discount", discount);
-    
 
     useEffect(() => {
         const getSubTotal = () => {

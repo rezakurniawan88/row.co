@@ -1,30 +1,64 @@
-export const sizeItems = [
+// Category
+export const categoryItems = [
     {
-        id: "s",
-        label: "S",
+        id: "men",
+        label: "Men"
     },
     {
-        id: "m",
-        label: "M",
+        id: "women",
+        label: "Women"
     },
     {
-        id: "l",
-        label: "L",
-    },
-    {
-        id: "xl",
-        label: "XL",
-    },
-    {
-        id: "xxl",
-        label: "XXL",
-    },
-    {
-        id: "xxxl",
-        label: "XXXL",
-    },
+        id: "kids",
+        label: "Kids"
+    }
 ];
 
+// Types
+export const typeItems = [
+    {
+        id: "t-shirts",
+        label: "T-shirts",
+    },
+    {
+        id: "shorts",
+        label: "Shorts",
+    },
+    {
+        id: "shirts",
+        label: "Shirts",
+    },
+    {
+        id: "hoodies",
+        label: "Hoodies",
+    },
+    {
+        id: "jeans",
+        label: "Jeans",
+    }
+];
+
+// Styles
+export const styleItems = [
+    {
+        id: "casual",
+        label: "Casual"
+    },
+    {
+        id: "formal",
+        label: "Formal"
+    },
+    {
+        id: "party",
+        label: "Party"
+    },
+    {
+        id: "sport",
+        label: "Sport"
+    }
+];
+
+// Colors
 export const colorItems = [
     {
         id: "white",
@@ -57,3 +91,57 @@ export const colorItems = [
         label: "Navy",
     },
 ];
+
+// Sizes
+export const sizeItems = [
+    {
+        id: "s",
+        label: "S",
+    },
+    {
+        id: "m",
+        label: "M",
+    },
+    {
+        id: "l",
+        label: "L",
+    },
+    {
+        id: "xl",
+        label: "XL",
+    },
+    {
+        id: "xxl",
+        label: "XXL",
+    },
+    {
+        id: "xxxl",
+        label: "XXXL",
+    },
+];
+
+// Size Details
+export const sizeDetails = {
+    s: 'Small',
+    m: 'Medium',
+    l: 'Large',
+    xl: 'X-Large',
+    xxl: '2X-Large',
+    xxxl: '3X-Large'
+};
+
+// Data Role
+export const dataRole = [
+    {
+        id: 1,
+        name: "ADMIN"
+    },
+    {
+        id: 2,
+        name: "BRAND"
+    },
+    {
+        id: 3,
+        name: "USER"
+    }
+]

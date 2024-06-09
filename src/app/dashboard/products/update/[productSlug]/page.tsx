@@ -7,43 +7,36 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from "zod"
 import { Button } from "@/components/ui/button"
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from '@/components/ui/checkbox'
-import { sizeItems, colorItems } from '@/lib/data-items'
+import { sizeItems, colorItems, categoryItems, typeItems, styleItems } from '@/lib/data-items'
 import { axiosInstance } from '@/lib/axios'
-import { useMutation, useQuery } from 'react-query'
+import { useMutation } from 'react-query'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import useFetchSingleProduct from '@/hooks/products/useFetchSingleProduct'
+import { useFetchAccessToken } from '@/hooks/token/useFetchAccessToken'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import useUserStore from '@/stores/userStore'
+import { LucideLoader2 } from 'lucide-react'
 
-export default function UpdateProductPage({ params }: { params: { productId: string } }) {
+export default function UpdateProductPage({ params }: { params: { productSlug: string } }) {
     const router = useRouter();
-    console.log("idroute", params.productId);
-
-    const { data: dataProduct } = useFetchSingleProduct({ productId: params.productId });
-    console.log("DataPrd", dataProduct);
-
-
+    const { userData } = useUserStore((state) => state);
+    const { data: dataToken } = useFetchAccessToken();
+    const { data: dataProduct, isLoading: dataProductIsLoading } = useFetchSingleProduct({ productSlug: params.productSlug });
     const [multipleImages, setMultipleImages] = useState<File[]>([]);
     const [previewImage, setPreviewImage] = useState(dataProduct?.images_url || []);
 
-    console.log("multiple", multipleImages);
-
-
     const formSchema = z.object({
-        title: z.string().min(3).max(20),
-        price: z.string(),
-        description: z.string().min(3).max(20),
-        category: z.string().min(3).max(20),
+        title: z.string().min(3).max(50),
+        price: z.coerce.number(),
+        description: z.string().min(3).max(200),
+        category: z.string(),
+        type: z.string(),
+        style: z.string(),
         colors: z.array(z.string()),
         sizes: z.array(z.string()),
     })
@@ -65,6 +58,8 @@ export default function UpdateProductPage({ params }: { params: { productId: str
         form.setValue("price", dataProduct?.price || "0");
         form.setValue("description", dataProduct?.description || "");
         form.setValue("category", dataProduct?.category || "");
+        form.setValue("type", dataProduct?.type || "");
+        form.setValue("style", dataProduct?.style || "");
         form.setValue("colors", dataProduct?.colors || []);
         form.setValue("sizes", dataProduct?.sizes || []);
     }, [form, form.setValue, dataProduct])
@@ -77,11 +72,8 @@ export default function UpdateProductPage({ params }: { params: { productId: str
         }
     }, [multipleImages, dataProduct])
 
-    console.log(dataProduct);
-
-
     const updateProductFn = async (values: any) => {
-        const productId = params.productId;
+        const productSlug = params.productSlug;
 
         const formData = new FormData();
 
@@ -95,11 +87,12 @@ export default function UpdateProductPage({ params }: { params: { productId: str
             }
         }
 
-        console.log("formData", ...formData);
+        formData.append("userId", userData?.userId);
 
-        const response = await axiosInstance.patch(`/product/${productId}`, formData, {
+        const response = await axiosInstance.patch(`/product/${productSlug}`, formData, {
             headers: {
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                "Authorization": `Bearer ${dataToken}`
             }
         });
 
@@ -107,7 +100,7 @@ export default function UpdateProductPage({ params }: { params: { productId: str
     }
 
     const { mutate: updateProduct } = useMutation({
-        mutationKey: ['updateProduct'],
+        mutationKey: ['updateProduct', userData?.userId],
         mutationFn: updateProductFn,
         onSuccess: (data) => {
             toast.success(data);
@@ -117,16 +110,22 @@ export default function UpdateProductPage({ params }: { params: { productId: str
             if (err.response.data.error === "Unexpected field") {
                 toast.error("Maximum 3 images allowed");
             } else {
-                toast.error(err.response.data.error);
+                toast.error(err.response.data.message);
             }
-            console.log("hasil error", err);
+            console.log(err);
         }
     })
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
-        console.log("file", multipleImages);
-        console.log(values);
         updateProduct(values);
+    }
+
+    if (dataProductIsLoading) {
+        return (
+            <div className="flex h-screen">
+                <LucideLoader2 className="m-auto animate-spin" size={100} />
+            </div>
+        )
     }
 
     return (
@@ -135,8 +134,8 @@ export default function UpdateProductPage({ params }: { params: { productId: str
             <SidebarDashboard />
 
             <div className="p-4 sm:ml-64">
-                <div className="p-4 mt-14 mb-6">
-                    <h1 className="text-3xl font-bold">Update Product</h1>
+                <div className="p-4 mt-14 md:mb-6">
+                    <h1 className="text-2xl md:text-3xl font-bold">Update Product</h1>
                 </div>
 
                 <div className="mx-5">
@@ -187,9 +186,62 @@ export default function UpdateProductPage({ params }: { params: { productId: str
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Category</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Input your category ..." {...field} />
-                                        </FormControl>
+                                        <Select onValueChange={field.onChange} defaultValue={dataProduct?.category || ""}>
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select a category ..." />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                {categoryItems.map((category, index) => (
+                                                    <SelectItem key={index} value={category.id}>{category.label}</SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="type"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Type</FormLabel>
+                                        <Select onValueChange={field.onChange} defaultValue={dataProduct?.type || ""}>
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select a type ..." />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                {typeItems.map((type, index) => (
+                                                    <SelectItem key={index} value={type.id}>{type.label}</SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="style"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Style</FormLabel>
+                                        <Select onValueChange={field.onChange} defaultValue={dataProduct?.style || ""}>
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select a style ..." />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                {styleItems.map((style, index) => (
+                                                    <SelectItem key={index} value={style.id}>{style.label}</SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -294,9 +346,9 @@ export default function UpdateProductPage({ params }: { params: { productId: str
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Images</FormLabel>
-                                        <div className="preview-image mt-20 flex gap-4">
-                                            {previewImage.map((image, index) => (
-                                                <Image key={index} src={image} width={200} height={200} alt={`image-${index}`} />
+                                        <div className="preview-image w-full mt-20 flex gap-4">
+                                            {previewImage.map((image: any, index: number) => (
+                                                <Image key={index} src={image} width={200} height={200} alt={`image-${index}`} className="w-1/4 md:w-[12%]" />
                                             ))}
                                         </div>
                                         <FormControl>
@@ -306,7 +358,7 @@ export default function UpdateProductPage({ params }: { params: { productId: str
                                     </FormItem>
                                 )}
                             />
-                            <Button type="submit">Save</Button>
+                            <Button type="submit" className="w-full md:w-28">Save</Button>
                         </form>
                     </Form>
                 </div>
